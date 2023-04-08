@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+  </head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial"
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <form id="frm" style="margin:50px auto;max-width:600px;">
+        <div class="row">
+            <div class="col-md-10">
+                <input type="text" id="title" placeholder="title" style="border-radius:0px;" class="form-control"/><br>
+            </div>
+            <div class="col-md-2">
+                <input type="submit" id="btn" placeholder="title" style="border-radius:0px;" class="btn btn-outline-prime"/><br>
+            </div>
+        </div>
+    </form>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <img src="https://i0.wp.com/auralcrave.com/wp-content/uploads/2017/11/batman_nolan.jpg?resize=810%2C444&ssl=1"
+            </div>
+            <div class="col-md-8">
+                <h4><b>Title :</b> Batman</h4><hr>
+                <h6><b>Genre :</b> Action</h6>
+                <h6><b>Rating :</b> 7.6/10</h6>
+                <h6><b>Director :</b> Christopher Nolan</h6>
+                <p><b>Plot :</b>
+                    The Dark Knight is back with more action than ever, as the Batman (Christian Bale) defends the city against The Joker (Heath Ledger) and his entourage as they take over Gotham!
+                </p>
+                </div>
+
+    </body>
+    <script>
+
+        $(document).ready(function(){
+            fetch('http://www.omdbapi.com/?apikey=29909bca&t=batman')
+            .then(res=>res.json())
+            .then(data=>console.log(data))
+            .catch(err=>console.log(err));
+            var frm = document.getElementById("frm");
+            frm.addEventListener("submit",function(e){
+                e.preventDefault();
+                var title = document.getElementById("title").value;
+                fetch('http://www.omdbapi.com/?apikey=29909bca&t=' +title)
+                  .then(res=>res.json())
+                  .then(data=>console.log(data))
+                  .catch(err=>console.log(err));
+            })
+        })
+
+            </script>
+
+
+
+
+
+
+            </div>
+        </div>
+    </div>
+    <div class="stars">
+      <a>⭐</a>
+      <a>⭐</a>
+      <a>⭐</a>
+      <a>⭐</a>
+      <a>⭐</a>
+    </div>
+
+    <script src="script.js"></sript>
+    <script>
+      document.write(
+        '<script src="http://' +
+          (location.host || "localhost").split(":")[0] +
+          ':35729/livereload.js?snipver=1"></' +
+          "script>"
+      );
+    </script>
+  </body>
+</html>
